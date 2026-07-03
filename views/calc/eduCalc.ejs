@@ -1,0 +1,99 @@
+<%layout("layouts/boilerplate.ejs")%>
+
+<body>
+  <section class="py-5">
+    <div class="text-center mb-5">
+      <h1 class="fw-bold display-6">Child Education Planner</h1>
+
+      <p class="text-muted col-lg-6 mx-auto">
+        Plan for your child's higher education by estimating future costs and
+        understanding how much you need to save every month.
+      </p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="card shadow border-0 rounded-4">
+          <div class="card-body p-5">
+            <form action="/calculators/education" method="POST">
+              <div class="mb-4">
+                <label class="form-label fw-semibold">
+                  Child's Current Age
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  name="childAge"
+                  placeholder="Enter your child's age"
+                  min="0"
+                  max="18"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-semibold">
+                  Age at Higher Education
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  name="educationAge"
+                  placeholder="For example: 18"
+                  min="15"
+                  max="25"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-semibold">
+                  Expected Cost of Education (₹)
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  name="educationCost"
+                  placeholder="For example: 2000000"
+                  min="100000"
+                  required
+                />
+              </div>
+
+              <div class="mb-5">
+                <label class="form-label fw-semibold">
+                  Expected Education Inflation (%)
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  name="inflation"
+                  placeholder="For example: 8"
+                  min="1"
+                  max="20"
+                  step="0.1"
+                  required
+                />
+              </div>
+
+              <div class="d-grid">
+                <button class="btn btn-primary btn-lg rounded-3">
+                  Calculate Savings Goal
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <p class="text-center text-muted mt-4 small">
+          * Education costs may vary depending on inflation, institution, and
+          future economic conditions.
+        </p>
+      </div>
+    </div>
+  </section>
+</body>

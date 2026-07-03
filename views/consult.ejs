@@ -1,0 +1,148 @@
+<%layout("layouts/boilerplate.ejs")%>
+<body>
+  <section class="py-5">
+    <input
+      type="text"
+      name="name"
+      class="form-control"
+      value="<%= googleUser.name %>"
+      readonly
+    />
+
+    <input
+      type="email"
+      name="email"
+      class="form-control"
+      value="<%= googleUser.email %>"
+      readonly
+    />
+    <div class="text-center mb-5">
+      <h1 class="fw-bold display-6">Get a Free Consultation</h1>
+
+      <p class="text-muted col-lg-7 mx-auto">
+        Every family has different financial goals. Share your requirements and
+        receive personalized guidance on choosing the right insurance solutions.
+      </p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card border-0 shadow rounded-4">
+          <div class="card-body p-5">
+            <form action="/consult" method="POST">
+              <div class="mb-4">
+                <label class="form-label fw-semibold"> Full Name </label>
+
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  name="name"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <label class="form-label fw-semibold"> Mobile Number </label>
+
+                  <input
+                    type="tel"
+                    class="form-control form-control-lg"
+                    name="phone"
+                    placeholder="Enter your mobile number"
+                    required
+                  />
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <label class="form-label fw-semibold"> Email Address </label>
+
+                  <input
+                    type="email"
+                    class="form-control form-control-lg"
+                    name="email"
+                    placeholder="Enter your email"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-semibold"> Occupation </label>
+
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  name="occupation"
+                  placeholder="For example: Employee, Business Owner, Student"
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-semibold">
+                  Consultation Purpose
+                </label>
+
+                <select
+                  class="form-select form-select-lg"
+                  name="purpose"
+                  required
+                >
+                  <option value="">Select an option</option>
+
+                  <option value="Life Insurance Planning">
+                    Life Insurance Planning
+                  </option>
+
+                  <option value="Child Education Planning">
+                    Child Education Planning
+                  </option>
+
+                  <option value="Retirement Planning">
+                    Retirement Planning
+                  </option>
+
+                  <option value="Tax Saving Solutions">
+                    Tax Saving Solutions
+                  </option>
+
+                  <option value="Savings & Investment Plans">
+                    Savings & Investment Plans
+                  </option>
+
+                  <option value="General Financial Consultation">
+                    General Financial Consultation
+                  </option>
+                </select>
+              </div>
+
+              <div class="mb-5">
+                <label class="form-label fw-semibold">
+                  Tell Us About Your Requirements
+                </label>
+
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  name="message"
+                  placeholder="For example: I would like to know about retirement plans and the amount I should invest monthly..."
+                ></textarea>
+              </div>
+
+              <div class="d-grid">
+                <button class="btn btn-primary btn-lg rounded-3">
+                  Request Consultation
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <p class="text-center text-muted mt-4">
+          We respect your privacy. Your information will only be used for
+          consultation purposes.
+        </p>
+      </div>
+    </div>
+  </section>
+</body>

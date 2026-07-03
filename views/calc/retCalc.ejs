@@ -1,0 +1,94 @@
+<%layout("layouts/boilerplate.ejs")%>
+<body>
+  <section class="py-5">
+    <div class="text-center mb-5">
+      <h1 class="fw-bold display-6">Retirement Calculator</h1>
+
+      <p class="text-muted col-lg-6 mx-auto">
+        Estimate your future retirement corpus and understand how your savings
+        today can help you achieve financial independence.
+      </p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="card shadow border-0 rounded-4">
+          <div class="card-body p-5">
+            <form action="/calculators/retirement" method="POST">
+              <div class="mb-4">
+                <label class="form-label fw-semibold"> Current Age </label>
+
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  name="currentAge"
+                  placeholder="Enter your current age"
+                  min="18"
+                  max="70"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-semibold"> Retirement Age </label>
+
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  name="retirementAge"
+                  placeholder="For example: 60"
+                  min="40"
+                  max="80"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-semibold">
+                  Monthly Investment (₹)
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  name="monthlyInvestment"
+                  placeholder="For example: 5000"
+                  min="100"
+                  required
+                />
+              </div>
+
+              <div class="mb-5">
+                <label class="form-label fw-semibold">
+                  Expected Annual Return (%)
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  name="return"
+                  placeholder="For example: 10"
+                  min="1"
+                  max="20"
+                  step="0.1"
+                  required
+                />
+              </div>
+
+              <div class="d-grid">
+                <button class="btn btn-primary btn-lg rounded-3">
+                  Calculate Retirement Corpus
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <p class="text-center text-muted mt-4 small">
+          * The estimated corpus is based on assumed returns and should be used
+          for planning purposes only.
+        </p>
+      </div>
+    </div>
+  </section>
+</body>

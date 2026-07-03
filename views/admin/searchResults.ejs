@@ -1,0 +1,159 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+<section class="py-5">
+
+  <div class="mb-5">
+
+    <h1 class="fw-bold">
+      Search Results
+    </h1>
+
+    <p class="text-muted mb-0">
+      Search by <%= field %> for "<%= q %>"
+    </p>
+
+  </div>
+
+  <% if (customers.length === 0 && policies.length === 0) { %>
+
+    <div
+      class="card border-0 shadow-sm rounded-4 p-5 text-center"
+    >
+
+      <i
+        class="fa-solid fa-magnifying-glass fs-1 text-muted mb-3"
+      ></i>
+
+      <h4>
+        No Results Found
+      </h4>
+
+      <p class="text-muted mb-0">
+        Try searching with different details.
+      </p>
+
+    </div>
+
+  <% } %>
+
+  <% if (customers.length > 0) { %>
+
+    <h3 class="fw-bold mb-4">
+      Customers
+    </h3>
+
+    <div class="row g-4 mb-5">
+
+      <% customers.forEach(c => { %>
+
+        <div class="col-md-6 col-lg-4">
+
+          <div
+            class="card border-0 shadow-sm rounded-4 h-100"
+          >
+
+            <div class="card-body p-4">
+
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+
+                <h5 class="fw-bold mb-0">
+                  <%= c.fullName %>
+                </h5>
+
+                <span class="badge text-bg-primary">
+                  <%= c.policyCount %> Policies
+                </span>
+
+              </div>
+
+              <p class="mb-2">
+                <i class="fa-solid fa-phone me-2 text-primary"></i>
+                <%= c.phoneNum %>
+              </p>
+
+              <% if (c.email) { %>
+                <p class="mb-2">
+                  <i class="fa-solid fa-envelope me-2 text-primary"></i>
+                  <%= c.email %>
+                </p>
+              <% } %>
+
+              <p class="mb-4">
+                <i class="fa-solid fa-briefcase me-2 text-primary"></i>
+                <%= c.occupation || "Not Provided" %>
+              </p>
+
+              <a
+                href="/admin/customers/<%= c._id %>"
+                class="btn btn-outline-primary w-100"
+              >
+                View Customer
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      <% }) %>
+
+    </div>
+
+  <% } %>
+
+  <% if (policies.length > 0) { %>
+
+    <h3 class="fw-bold mb-4">
+      Policies
+    </h3>
+
+    <div class="row g-4">
+
+      <% policies.forEach(p => { %>
+
+        <div class="col-md-6 col-lg-4">
+
+          <div
+            class="card border-0 shadow-sm rounded-4 h-100"
+          >
+
+            <div class="card-body p-4">
+
+              <h5 class="fw-bold">
+                <%= p.policyName %>
+              </h5>
+
+              <p class="mb-2">
+                Policy No:
+                <%= p.policyNum %>
+              </p>
+
+              <p class="mb-4">
+                Customer:
+                <%= p.customer.fullName %>
+              </p>
+
+              <a
+                href="/admin/policies/<%= p._id %>"
+                class="btn btn-outline-primary w-100"
+              >
+                View Policy
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      <% }) %>
+
+    </div>
+
+  <% } %>
+
+</section>
+</body>

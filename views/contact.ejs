@@ -1,0 +1,164 @@
+<%layout("layouts/boilerplate.ejs")%>
+
+<body>
+  <section class="py-5">
+    <div class="text-center mb-5">
+      <h1 class="fw-bold display-6">Contact Me</h1>
+
+      <p class="text-muted col-lg-6 mx-auto">
+        Whether you're planning for your family's future, retirement, or
+        financial security, I'm here to guide you every step of the way.
+      </p>
+    </div>
+
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <a href="tel:+919876543210" class="text-decoration-none text-dark">
+          <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-body text-center p-4">
+              <i class="fa-solid fa-phone fs-1 text-primary mb-3"></i>
+
+              <h5 class="fw-bold">Phone</h5>
+
+              <p class="text-muted mb-0">+91 9440886185</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4">
+        <a
+          href="mailto:example@gmail.com?subject=LIC Consultation"
+          class="text-decoration-none text-dark"
+        >
+          <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-body text-center p-4">
+              <i class="fa-solid fa-envelope fs-1 text-primary mb-3"></i>
+
+              <h5 class="fw-bold">Email</h5>
+
+              <p class="text-muted mb-0">gopalreddy1221@gmail.com</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4">
+        <a
+          href="https://wa.me/9440886185?text=Hello,%20I%20would%20like%20to%20know%20more%20about%20LIC%20plans."
+          class="text-decoration-none text-dark"
+          target="_blank"
+        >
+          <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-body text-center p-4">
+              <i class="fa-brands fa-whatsapp fs-1 text-success mb-3"></i>
+
+              <h5 class="fw-bold">WhatsApp</h5>
+
+              <p class="text-muted mb-0">Available for quick assistance</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card border-0 shadow rounded-4">
+          <div class="card-body p-5">
+            <h3 class="fw-bold text-center mb-4">Request a Consultation</h3>
+
+            <form action="/contact" method="POST">
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <label class="form-label fw-semibold"> Full Name </label>
+
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <label class="form-label fw-semibold"> Phone Number </label>
+
+                  <input
+                    type="tel"
+                    class="form-control form-control-lg"
+                    name="phone"
+                    placeholder="Enter your mobile number"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-semibold"> Email Address </label>
+
+                <input
+                  type="email"
+                  class="form-control form-control-lg"
+                  name="email"
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-semibold"> Requirement </label>
+
+                <select class="form-select form-select-lg" name="requirement">
+                  <option>Select Requirement</option>
+
+                  <option>Life Insurance</option>
+
+                  <option>Child Plan</option>
+
+                  <option>Retirement Planning</option>
+
+                  <option>Savings Plan</option>
+
+                  <option>General Consultation</option>
+                </select>
+              </div>
+
+              <div class="mb-5">
+                <label class="form-label fw-semibold"> Message </label>
+
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  name="message"
+                  placeholder="Tell us how we can help you..."
+                ></textarea>
+              </div>
+
+              <div class="d-grid">
+                <button class="btn btn-primary btn-lg rounded-3">
+                  Submit Request
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <h5 class="fw-bold mb-3">Office Hours</h5>
+
+      <p class="text-muted mb-1">Monday - Saturday</p>
+
+      <p class="text-muted">9:00 AM - 7:00 PM</p>
+    </div>
+  </section>
+  <a
+    href="https://wa.me/919876543210?text=Hello%20Mr.%20P.%20Gopal%20Reddy,%20I%20would%20like%20to%20know%20more%20about%20LIC%20plans."
+    class="whatsapp-btn"
+    target="_blank"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</body>

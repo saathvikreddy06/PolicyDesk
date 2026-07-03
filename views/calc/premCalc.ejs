@@ -1,0 +1,106 @@
+<%layout("layouts/boilerplate.ejs")%>
+<body>
+  <section class="py-5">
+    <div class="text-center mb-5">
+      <h1 class="fw-bold display-6">Premium Calculator</h1>
+
+      <p class="text-muted col-lg-6 mx-auto">
+        Get an approximate estimate of your insurance premium and plan your
+        financial protection with confidence.
+      </p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="card shadow border-0 rounded-4">
+          <div class="card-body p-5">
+            <form action="/calculators/premium" method="POST">
+              <div class="mb-4">
+                <label class="form-label fw-semibold"> Age </label>
+
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  name="age"
+                  placeholder="Enter your age"
+                  min="18"
+                  max="80"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-semibold">
+                  Desired Sum Assured (₹)
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  name="sumAssured"
+                  placeholder="For example: 1000000"
+                  min="100000"
+                  step="50000"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-semibold">
+                  Policy Term (Years)
+                </label>
+
+                <select class="form-select form-select-lg" name="term" required>
+                  <option value="">Select Policy Term</option>
+
+                  <option value="10">10 Years</option>
+
+                  <option value="15">15 Years</option>
+
+                  <option value="20">20 Years</option>
+
+                  <option value="25">25 Years</option>
+
+                  <option value="30">30 Years</option>
+                </select>
+              </div>
+
+              <div class="mb-5">
+                <label class="form-label fw-semibold">
+                  Premium Payment Frequency
+                </label>
+
+                <select
+                  class="form-select form-select-lg"
+                  name="frequency"
+                  required
+                >
+                  <option value="">Select Frequency</option>
+
+                  <option value="monthly">Monthly</option>
+
+                  <option value="quarterly">Quarterly</option>
+
+                  <option value="half-yearly">Half-Yearly</option>
+
+                  <option value="yearly">Yearly</option>
+                </select>
+              </div>
+
+              <div class="d-grid">
+                <button class="btn btn-primary btn-lg rounded-3">
+                  Calculate Premium
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <p class="text-center text-muted mt-4 small">
+          * This calculator provides an approximate estimate and should not be
+          considered an official premium quotation.
+        </p>
+      </div>
+    </div>
+  </section>
+</body>

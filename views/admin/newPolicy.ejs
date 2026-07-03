@@ -1,0 +1,179 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+  <section class="py-5">
+    <div
+      class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5"
+    >
+      <div>
+        <h1 class="fw-bold">Add Policy</h1>
+
+        <p class="text-muted mb-0">
+          Add a new policy for
+          <strong><%= customer.fullName %></strong>
+        </p>
+      </div>
+
+      <a
+        href="/admin/customers/<%= customer._id %>"
+        class="btn btn-outline-dark mt-3 mt-md-0"
+      >
+        Back
+      </a>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+      <div class="card-body p-4">
+        <h5 class="fw-bold mb-3">Customer Information</h5>
+
+        <p class="mb-2">
+          <strong>Name:</strong>
+          <%= customer.fullName %>
+        </p>
+
+        <p class="mb-2">
+          <strong>Phone:</strong>
+          <%= customer.phoneNum %>
+        </p>
+
+        <p class="mb-0">
+          <strong>Email:</strong>
+          <%= customer.email || "Not Provided" %>
+        </p>
+      </div>
+    </div>
+
+    <form action="/admin/customers/<%= customer._id %>/policies" method="POST">
+      <div class="card border-0 shadow-sm rounded-4 mb-4">
+        <div class="card-body p-4">
+          <h4 class="fw-bold mb-4">Policy Information</h4>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label"> Policy Number </label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="policyNum"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label"> Policy Name </label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="policyName"
+                required
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label"> Table </label>
+
+              <input type="number" class="form-control" name="table" required />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label"> DOC </label>
+
+              <input type="date" class="form-control" name="doc" required />
+            </div>
+
+            <div class="col-md-2">
+              <label class="form-label"> Term </label>
+
+              <input type="number" class="form-control" name="term" required />
+            </div>
+
+            <div class="col-md-2">
+              <label class="form-label"> PPT </label>
+
+              <input type="number" class="form-control" name="ppt" required />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-4 mb-5">
+        <div class="card-body p-4">
+          <h4 class="fw-bold mb-4">Premium Information</h4>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label"> Proposed Sum </label>
+
+              <input
+                type="number"
+                class="form-control"
+                name="proposedSum"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label"> Premium </label>
+
+              <input
+                type="number"
+                class="form-control"
+                name="premium"
+                required
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label"> Premium Mode </label>
+
+              <select class="form-select" name="mode" required>
+                <option value="">Select</option>
+
+                <option value="Monthly">Monthly</option>
+
+                <option value="Quarterly">Quarterly</option>
+
+                <option value="Half-Yearly">Half-Yearly</option>
+
+                <option value="Yearly">Yearly</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label"> Next Premium Date </label>
+
+              <input type="date" class="form-control" name="nextPremiumDate" />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label"> Maturity Date </label>
+
+              <input type="date" class="form-control" name="maturityDate" />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label"> Status </label>
+
+              <select class="form-select" name="status">
+                <option value="Active">Active</option>
+
+                <option value="Grace Period">Grace Period</option>
+
+                <option value="Lapsed">Lapsed</option>
+
+                <option value="Paid-up">Paid-up</option>
+
+                <option value="Matured">Matured</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-end">
+        <button class="btn btn-primary btn-lg">Save Policy</button>
+      </div>
+    </form>
+  </section>
+</body>

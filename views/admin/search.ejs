@@ -1,0 +1,56 @@
+<% layout("layouts/boilerplate") %>
+<body>
+  <section class="py-5">
+    <div class="mb-5">
+      <h1 class="fw-bold">Search Database</h1>
+
+      <p class="text-muted">Search customers and policies instantly.</p>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4">
+      <div class="card-body p-5">
+        <form action="/admin/search/results" method="GET">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label"> Search By </label>
+
+              <select name="field" class="form-select" required>
+                <option value="">Select Field</option>
+
+                <option value="fullName">Customer Name</option>
+
+                <option value="phoneNum">Phone Number</option>
+
+                <option value="panNum">PAN Number</option>
+
+                <option value="aadharNum">Aadhaar Number</option>
+
+                <option value="policyNum">Policy Number</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label"> Search Value </label>
+
+              <input
+                type="text"
+                name="q"
+                class="form-control"
+                placeholder="Enter value..."
+                required
+              />
+            </div>
+
+            <div class="col-md-2 d-flex align-items-end">
+              <button class="btn btn-primary w-100">
+                <i class="fa-solid fa-magnifying-glass me-2"></i>
+
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</body>

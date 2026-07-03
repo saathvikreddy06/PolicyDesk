@@ -1,0 +1,116 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+.navbar {
+    height: 4.5rem !important;
+    background-color: white !important;
+}
+
+.f-info {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    margin-top: 1rem;
+}
+
+.whatsapp-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.08);
+  color: white;
+}
+
+.agent-pic {
+    height: 400px;
+}
+
+.card {
+  transition: all 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.contact-card {
+  transition: all 0.25s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.alert {
+  width: 40vw;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1009px) {
+  .navbar-toggler {
+    display: none;
+  }
+
+  .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+    align-items: center;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    align-items: center;
+  }
+  .nav-link {
+    margin: 0 5px;
+  }
+}
+
+@media (max-width: 1008px) {
+  .navbar-toggler {
+    margin-bottom: 1rem;
+  }
+  .navbar-collapse {
+    background-color: white;
+  }
+  .home-btn {
+    margin-bottom: 1rem;
+  }
+  .agent-pic {
+    max-width: 300px !important;
+    max-height: 300px !important;
+  }
+}
+
+.google-btn {
+  margin-left: auto !important;
+  margin-right: 1rem;
+}

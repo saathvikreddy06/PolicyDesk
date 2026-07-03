@@ -1,0 +1,153 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+  <section class="py-5">
+    <div
+      class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5"
+    >
+      <div>
+        <h1 class="fw-bold"><%= policy.policyName %></h1>
+
+        <p class="text-muted mb-0">Policy Details</p>
+      </div>
+
+      <div class="mt-3 mt-md-0">
+        <a
+          href="/admin/policies/<%= policy._id %>/edit"
+          class="btn btn-dark me-2"
+        >
+          Edit Policy
+        </a>
+
+        <a
+          href="/admin/customers/<%= policy.customer._id %>"
+          class="btn btn-outline-primary me-2"
+        >
+          View Customer
+        </a>
+
+        <form
+          action="/admin/policies/<%= policy._id %>?_method=DELETE"
+          method="POST"
+          class="d-inline"
+        >
+          <button
+            class="btn btn-danger"
+            onclick="return confirm('Delete this policy?');"
+          >
+            Delete
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+          <div class="card-body p-4">
+            <h4 class="fw-bold mb-4">Policy Information</h4>
+
+            <p>
+              <strong>Policy Number:</strong>
+              <%= policy.policyNum %>
+            </p>
+
+            <p>
+              <strong>Policy Name:</strong>
+              <%= policy.policyName %>
+            </p>
+
+            <p>
+              <strong>Table:</strong>
+              <%= policy.table %>
+            </p>
+
+            <p>
+              <strong>Date of Commencement:</strong>
+              <%= policy.doc.toDateString() %>
+            </p>
+
+            <p>
+              <strong>Term:</strong>
+              <%= policy.term %> Years
+            </p>
+
+            <p class="mb-0">
+              <strong>PPT:</strong>
+              <%= policy.ppt %> Years
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+          <div class="card-body p-4">
+            <h4 class="fw-bold mb-4">Financial Information</h4>
+
+            <p>
+              <strong>Proposed Sum:</strong>
+              ₹ <%= policy.proposedSum.toLocaleString("en-IN") %>
+            </p>
+
+            <p>
+              <strong>Premium:</strong>
+              ₹ <%= policy.premium.toLocaleString("en-IN") %>
+            </p>
+
+            <p>
+              <strong>Premium Mode:</strong>
+              <%= policy.mode %>
+            </p>
+
+            <p>
+              <strong>Status:</strong>
+
+              <span
+                class="badge <%= policy.status === 'Active' ? 'text-bg-success' : policy.status === 'Grace Period' ? 'text-bg-warning' : policy.status === 'Lapsed' ? 'text-bg-danger' : 'text-bg-secondary' %>"
+              >
+                <%= policy.status %>
+              </span>
+            </p>
+
+            <p>
+              <strong>Next Premium Date:</strong>
+
+              <%= policy.nextPremiumDate ? policy.nextPremiumDate.toDateString()
+              : "Not Set" %>
+            </p>
+
+            <p class="mb-0">
+              <strong>Maturity Date:</strong>
+
+              <%= policy.maturityDate ? policy.maturityDate.toDateString() :
+              "Not Set" %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="card border-0 shadow-sm rounded-4">
+          <div class="card-body p-4">
+            <h4 class="fw-bold mb-4">Policy Holder</h4>
+
+            <p>
+              <strong>Name:</strong>
+              <%= policy.customer.fullName %>
+            </p>
+
+            <p>
+              <strong>Phone:</strong>
+              <%= policy.customer.phoneNum %>
+            </p>
+
+            <p class="mb-0">
+              <strong>Email:</strong>
+              <%= policy.customer.email || "Not Provided" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

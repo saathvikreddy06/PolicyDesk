@@ -1,0 +1,261 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+<section class="py-5">
+
+  
+  <div
+    class="d-flex flex-column flex-md-row
+           justify-content-between
+           align-items-md-center
+           mb-5"
+  >
+    <div>
+      <h1 class="fw-bold">
+        Customers
+      </h1>
+
+      <p class="text-muted mb-0">
+        Manage all policy holders from one place.
+      </p>
+    </div>
+
+    <a
+      href="/admin/customers/new"
+      class="btn btn-primary mt-3 mt-md-0"
+    >
+      <i class="fa-solid fa-plus me-2"></i>
+      Add Customer
+    </a>
+  </div>
+
+  
+  <div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-4 text-center">
+
+      <i
+        class="fa-solid fa-users
+               fs-1 text-primary mb-3"
+      ></i>
+
+      <h2 class="fw-bold">
+        <%= customers.length %>
+      </h2>
+
+      <p class="text-muted mb-0">
+        Total Customers
+      </p>
+
+    </div>
+  </div>
+
+ 
+  <div class="mb-5">
+
+  <form action="/admin/search/results" method="GET">
+
+    <div class="row g-2">
+
+      <div class="col-md-3">
+        <select
+          name="field"
+          class="form-select"
+          required
+        >
+          <option value="">
+            Search By
+          </option>
+
+          <option value="fullName">
+            Customer Name
+          </option>
+
+          <option value="phoneNum">
+            Phone Number
+          </option>
+
+          <option value="panNum">
+            PAN Number
+          </option>
+
+          <option value="aadharNum">
+            Aadhaar Number
+          </option>
+
+          <option value="policyNum">
+            Policy Number
+          </option>
+        </select>
+      </div>
+
+      <div class="col-md-7">
+        <input
+          type="text"
+          name="q"
+          class="form-control"
+          placeholder="Enter search value..."
+          required
+        >
+      </div>
+
+      <div class="col-md-2">
+        <button
+          class="btn btn-primary w-100"
+        >
+          <i class="fa-solid fa-magnifying-glass me-2"></i>
+          Search
+        </button>
+      </div>
+
+    </div>
+
+  </form>
+
+</div>
+
+  
+  <% if (customers.length === 0) { %>
+
+    <div
+      class="card border-0 shadow-sm
+             rounded-4 p-5 text-center"
+    >
+
+      <i
+        class="fa-solid fa-user-slash
+               fs-1 text-muted mb-3"
+      ></i>
+
+      <h4>
+        No Customers Found
+      </h4>
+
+      <p class="text-muted">
+        Start by adding your first customer.
+      </p>
+
+      <div>
+        <a
+          href="/admin/customers/new"
+          class="btn btn-primary"
+        >
+          Add Customer
+        </a>
+      </div>
+
+    </div>
+
+  <% } %>
+
+  
+  <div class="row g-4">
+
+    <% customers.forEach(c => { %>
+
+      <div class="col-md-6 col-lg-4">
+
+        <div
+          class="card border-0 shadow-sm
+                 rounded-4 h-100"
+        >
+
+          <div class="card-body p-4">
+
+            <div
+              class="d-flex
+                     justify-content-between
+                     align-items-center
+                     mb-3"
+            >
+
+              <h5 class="fw-bold mb-0">
+                <%= c.fullName %>
+              </h5>
+
+              <span
+                class="badge text-bg-primary"
+              >
+                <%= c.policyCount %>
+                Policies
+              </span>
+
+            </div>
+
+            <p class="mb-2">
+
+              <i
+                class="fa-solid fa-phone
+                       me-2 text-primary"
+              ></i>
+
+              <%= c.phoneNum %>
+
+            </p>
+
+            <% if (c.email) { %>
+
+              <p class="mb-2">
+
+                <i
+                  class="fa-solid fa-envelope
+                         me-2 text-primary"
+                ></i>
+
+                <%= c.email %>
+
+              </p>
+
+            <% } %>
+
+            <p class="mb-4">
+
+              <i
+                class="fa-solid fa-briefcase
+                       me-2 text-primary"
+              ></i>
+
+              <%= c.occupation || "Not Provided" %>
+
+            </p>
+
+            <div class="d-flex gap-2">
+
+  <a
+    href="/admin/customers/<%= c._id %>"
+    class="btn btn-outline-primary flex-fill"
+  >
+    View
+  </a>
+
+  <a
+    href="/admin/customers/<%= c._id %>/edit"
+    class="btn btn-dark flex-fill"
+  >
+    Edit
+  </a>
+
+  <form
+    action="/admin/customers/<%= c._id %>?_method=DELETE"
+    method="POST"
+    class="flex-fill"
+  >
+    <button
+      class="btn btn-outline-danger w-100"
+      onclick="return confirm('Delete this customer?')"
+    >
+      Delete
+    </button>
+  </form>
+
+</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    <% }) %>
+
+  </div>
+</body>
+</section>

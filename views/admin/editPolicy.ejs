@@ -1,0 +1,296 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+<section class="py-5">
+
+  <div
+    class="d-flex flex-column flex-md-row
+           justify-content-between
+           align-items-md-center mb-5"
+  >
+    <div>
+      <h1 class="fw-bold">
+        Edit Policy
+      </h1>
+
+      <p class="text-muted mb-0">
+        Update policy details.
+      </p>
+    </div>
+
+    <a
+      href="/admin/policies/<%= policy._id %>"
+      class="btn btn-outline-dark mt-3 mt-md-0"
+    >
+      Back
+    </a>
+  </div>
+
+  <form
+    action="/admin/policies/<%= policy._id %>?_method=PATCH"
+    method="POST"
+  >
+
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+      <div class="card-body p-4">
+
+        <h4 class="fw-bold mb-4">
+          Policy Information
+        </h4>
+
+        <div class="row g-3">
+
+          <div class="col-md-6">
+            <label class="form-label">
+              Policy Number
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              name="policyNum"
+              value="<%= policy.policyNum %>"
+              required
+            >
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              Policy Name
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              name="policyName"
+              value="<%= policy.policyName %>"
+              required
+            >
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">
+              Table
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              name="table"
+              value="<%= policy.table %>"
+              required
+            >
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">
+              DOC
+            </label>
+
+            <input
+              type="date"
+              class="form-control"
+              name="doc"
+              value="<%= policy.doc.toISOString().split('T')[0] %>"
+              required
+            >
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">
+              Term
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              name="term"
+              value="<%= policy.term %>"
+              required
+            >
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">
+              PPT
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              name="ppt"
+              value="<%= policy.ppt %>"
+              required
+            >
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4 mb-5">
+      <div class="card-body p-4">
+
+        <h4 class="fw-bold mb-4">
+          Premium Information
+        </h4>
+
+        <div class="row g-3">
+
+          <div class="col-md-6">
+            <label class="form-label">
+              Proposed Sum
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              name="proposedSum"
+              value="<%= policy.proposedSum %>"
+              required
+            >
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              Premium
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              name="premium"
+              value="<%= policy.premium %>"
+              required
+            >
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">
+              Premium Mode
+            </label>
+
+            <select
+              class="form-select"
+              name="mode"
+              required
+            >
+              <option
+                value="Monthly"
+                <%= policy.mode === "Monthly" ? "selected" : "" %>
+              >
+                Monthly
+              </option>
+
+              <option
+                value="Quarterly"
+                <%= policy.mode === "Quarterly" ? "selected" : "" %>
+              >
+                Quarterly
+              </option>
+
+              <option
+                value="Half-Yearly"
+                <%= policy.mode === "Half-Yearly" ? "selected" : "" %>
+              >
+                Half-Yearly
+              </option>
+
+              <option
+                value="Yearly"
+                <%= policy.mode === "Yearly" ? "selected" : "" %>
+              >
+                Yearly
+              </option>
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">
+              Next Premium Date
+            </label>
+
+            <input
+              type="date"
+              class="form-control"
+              name="nextPremiumDate"
+              value="<%= policy.nextPremiumDate ? policy.nextPremiumDate.toISOString().split('T')[0] : '' %>"
+            >
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">
+              Maturity Date
+            </label>
+
+            <input
+              type="date"
+              class="form-control"
+              name="maturityDate"
+              value="<%= policy.maturityDate ? policy.maturityDate.toISOString().split('T')[0] : '' %>"
+            >
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">
+              Status
+            </label>
+
+            <select
+              class="form-select"
+              name="status"
+            >
+              <option
+                value="Active"
+                <%= policy.status === "Active" ? "selected" : "" %>
+              >
+                Active
+              </option>
+
+              <option
+                value="Grace Period"
+                <%= policy.status === "Grace Period" ? "selected" : "" %>
+              >
+                Grace Period
+              </option>
+
+              <option
+                value="Lapsed"
+                <%= policy.status === "Lapsed" ? "selected" : "" %>
+              >
+                Lapsed
+              </option>
+
+              <option
+                value="Paid-up"
+                <%= policy.status === "Paid-up" ? "selected" : "" %>
+              >
+                Paid-up
+              </option>
+
+              <option
+                value="Matured"
+                <%= policy.status === "Matured" ? "selected" : "" %>
+              >
+                Matured
+              </option>
+            </select>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="text-end">
+      <button
+        class="btn btn-primary btn-lg"
+      >
+        Update Policy
+      </button>
+    </div>
+
+  </form>
+
+</section>
+</body>

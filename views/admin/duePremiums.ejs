@@ -1,0 +1,128 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+<section class="py-5">
+
+  <div class="mb-5">
+
+    <h1 class="fw-bold">
+      Due Premiums
+    </h1>
+
+    <p class="text-muted mb-0">
+      Policies whose premium date has arrived.
+    </p>
+
+  </div>
+
+  <% if (policies.length === 0) { %>
+
+    <div
+      class="card border-0 shadow-sm rounded-4 p-5 text-center"
+    >
+
+      <i
+        class="fa-solid fa-circle-check
+               fs-1 text-success mb-3"
+      ></i>
+
+      <h4>
+        No Due Premiums
+      </h4>
+
+      <p class="text-muted mb-0">
+        All premiums are up to date.
+      </p>
+
+    </div>
+
+  <% } %>
+
+  <div class="row g-4">
+
+    <% policies.forEach(p => { %>
+
+      <div class="col-md-6">
+
+        <div
+          class="card border-0 shadow-sm rounded-4 h-100"
+        >
+
+          <div class="card-body p-4">
+
+            <div
+              class="d-flex justify-content-between
+                     align-items-center mb-3"
+            >
+
+              <h5 class="fw-bold mb-0">
+                <%= p.customer.fullName %>
+              </h5>
+
+              <span
+                class="badge text-bg-warning"
+              >
+                Due
+              </span>
+
+            </div>
+
+            <p class="mb-2">
+              <strong>Policy:</strong>
+              <%= p.policyName %>
+            </p>
+
+            <p class="mb-2">
+              <strong>Policy No:</strong>
+              <%= p.policyNum %>
+            </p>
+
+            <p class="mb-2">
+              <strong>Premium:</strong>
+              ₹ <%= p.premium.toLocaleString("en-IN") %>
+            </p>
+
+            <p class="mb-4">
+              <strong>Due Date:</strong>
+
+              <%= p.nextPremiumDate
+                    .toDateString() %>
+            </p>
+
+            <div class="d-flex gap-2">
+
+              <a
+                href="tel:<%= p.customer.phoneNum %>"
+                class="btn btn-outline-primary flex-fill"
+              >
+                Call
+              </a>
+
+              <a
+                href="https://wa.me/91<%= p.customer.phoneNum %>"
+                target="_blank"
+                class="btn btn-success flex-fill"
+              >
+                WhatsApp
+              </a>
+
+              <a
+                href="/admin/policies/<%= p._id %>"
+                class="btn btn-dark flex-fill"
+              >
+                View
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    <% }) %>
+
+  </div>
+
+</section>
+</body>

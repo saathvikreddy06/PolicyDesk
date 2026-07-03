@@ -1,0 +1,58 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+  <section
+    class="d-flex justify-content-center align-items-center"
+    style="min-height: 80vh"
+  >
+    <div class="col-md-7 col-lg-5">
+      <div class="card border-0 shadow rounded-4">
+        <div class="card-body p-5">
+          <div class="text-center mb-5">
+            <div class="mb-3">
+              <i
+                class="fa-solid fa-user-shield text-primary"
+                style="font-size: 3rem"
+              ></i>
+            </div>
+
+            <h2 class="fw-bold">Admin Login</h2>
+
+            <p class="text-muted mb-0">
+              Sign in to manage consultations and policy records.
+            </p>
+          </div>
+
+          <form action="/login" method="POST">
+            <div class="mb-4">
+              <label class="form-label fw-semibold"> Username </label>
+
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                name="username"
+                placeholder="Enter your username"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-semibold"> Password </label>
+
+              <input
+                type="password"
+                class="form-control form-control-lg"
+                name="password"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+
+            <div class="d-grid">
+              <button class="btn btn-primary btn-lg rounded-3">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

@@ -1,0 +1,302 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+  <section class="py-5">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+      <div>
+        <h1 class="fw-bold">Edit Customer</h1>
+        <p class="text-muted mb-0">Update customer information.</p>
+      </div>
+
+      <a
+        href="/admin/customers/<%= customer._id %>"
+        class="btn btn-outline-dark"
+      >
+        Back
+      </a>
+    </div>
+
+    <form
+      action="/admin/customers/<%= customer._id %>?_method=PATCH"
+      method="POST"
+    >
+      <div class="card border-0 shadow-sm rounded-4 mb-4">
+        <div class="card-body p-4">
+          <h4 class="fw-bold mb-4">Personal Information</h4>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="fullName"
+                value="<%= customer.fullName %>"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Date of Birth</label>
+              <input
+                type="date"
+                class="form-control"
+                name="dob"
+                value="<%= customer.dob.toISOString().split('T')[0] %>"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Father's Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="fatherName"
+                value="<%= customer.fatherName %>"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Mother's Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="motherName"
+                value="<%= customer.motherName %>"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Place of Birth</label>
+              <input
+                type="text"
+                class="form-control"
+                name="pob"
+                value="<%= customer.pob %>"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Occupation</label>
+              <input
+                type="text"
+                class="form-control"
+                name="occupation"
+                value="<%= customer.occupation %>"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Education</label>
+              <input
+                type="text"
+                class="form-control"
+                name="education"
+                value="<%= customer.education %>"
+                required
+              />
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label">Height (cm)</label>
+              <input
+                type="number"
+                class="form-control"
+                name="height"
+                value="<%= customer.height %>"
+                required
+              />
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label">Weight (kg)</label>
+              <input
+                type="number"
+                class="form-control"
+                name="weight"
+                value="<%= customer.weight %>"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-4 mb-4">
+        <div class="card-body p-4">
+          <h4 class="fw-bold mb-4">Contact Information</h4>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Phone Number</label>
+              <input
+                type="text"
+                class="form-control"
+                name="phoneNum"
+                value="<%= customer.phoneNum %>"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                value="<%= customer.email %>"
+              />
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">Address</label>
+              <textarea class="form-control" rows="3" name="address" required>
+<%= customer.address %></textarea
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-4 mb-4">
+        <div class="card-body p-4">
+          <h4 class="fw-bold mb-4">Identity & Financial Information</h4>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Aadhaar Number</label>
+              <input
+                type="text"
+                class="form-control"
+                name="aadharNum"
+                value="<%= customer.aadharNum %>"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">PAN Number</label>
+              <input
+                type="text"
+                class="form-control"
+                name="panNum"
+                value="<%= customer.panNum %>"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Income</label>
+              <input
+                type="number"
+                class="form-control"
+                name="income"
+                value="<%= customer.income %>"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-4 mb-4">
+        <div class="card-body p-4">
+          <h4 class="fw-bold mb-4">Bank Information</h4>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Bank Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="bankName"
+                value="<%= customer.bankName %>"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Account Number</label>
+              <input
+                type="text"
+                class="form-control"
+                name="bankAccountNum"
+                value="<%= customer.bankAccountNum %>"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">IFSC Code</label>
+              <input
+                type="text"
+                class="form-control"
+                name="ifscCode"
+                value="<%= customer.ifscCode %>"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">MICR</label>
+              <input
+                type="text"
+                class="form-control"
+                name="micr"
+                value="<%= customer.micr %>"
+                required
+              />
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">Bank Address</label>
+              <textarea
+                class="form-control"
+                rows="3"
+                name="bankAddress"
+                required
+              >
+<%= customer.bankAddress %></textarea
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-4 mb-5">
+        <div class="card-body p-4">
+          <h4 class="fw-bold mb-4">Nominee Information</h4>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Nominee Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="nominee[name]"
+                value="<%= customer.nominee.name %>"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Relation</label>
+              <input
+                type="text"
+                class="form-control"
+                name="nominee[relation]"
+                value="<%= customer.nominee.relation %>"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-end">
+        <button class="btn btn-primary btn-lg">Update Customer</button>
+      </div>
+    </form>
+  </section>
+</body>
