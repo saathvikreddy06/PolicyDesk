@@ -63,3 +63,7 @@ module.exports.logout = (req, res) => {
 
         res.redirect("/home");
     }
+
+module.exports.renderDuePremiums = async (req, res) => {
+    res.render("admin/duePremiums", { policies: [] });
+}
